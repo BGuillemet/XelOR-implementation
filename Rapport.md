@@ -32,3 +32,36 @@ Donc $(p \oplus G) \land F$ et $F\[ \neg G / p \]$ sont bien équisatisfiable (�
 
 ## Question 4
 
+La formule est de la forme $(p \oplus G) \land F$ avec $G = r \oplus s$, donc d'après la question 3, elle est équisatisfiable à $F \[ \neg G / p \]$.
+Or $\neg G = \neg (r \oplus s) \equiv \neg r \oplus s$, donc la formule initiale est équisatisfiable à :
+
+$$
+(q \oplus \neg r \oplus s) \land (\neg r \oplus s \oplus q \oplus \neg s) \land (\neg r \oplus s \oplus \neg q \oplus \neg r)
+$$
+
+De plus $(s \oplus \neg s) \equiv \top$ donc $\neg r \oplus s \oplus q \oplus \neg s \equiv \neg (\neg r \oplus q) \equiv r \oplus q$, et $\neg r \oplus \neg r \equiv \bot$ donc $\neg r \oplus s \oplus \neg q \oplus \neg r \equiv s \oplus \neg q$.
+Ainsi la formule est équisatisfiable à :
+
+$$
+(q \oplus \neg r \oplus s) \land (r \oplus q) \land (s \oplus \neg q)
+$$
+
+Cette formule est de la forme $(r \oplus G') \land F'$ avec $G' = q$, donc d'après la question 3 elle est équisatisfiable à :
+
+$$
+(q \oplus q \oplus s) \land (s \oplus \neg q)
+\equiv s \land (s \oplus \neg q)
+$$
+
+qui est équisatisfiable à $q$ en utilisant encore la question 3.
+
+Ainsi la formule est satisfiable par la valuation $\rho$ telle que
+
+$$
+\begin{array}{l}
+\rho(q) = 1 \\
+\rho(s) = 1 - \rho(\neg q) = 1 \\
+\rho(r) = 1 - \rho(G') = 1 - \rho(q) = 0 \\
+\rho(p) = 1 - \rho(G) = 1 - \rho(r \oplus s) = 0
+\end{array}
+$$
