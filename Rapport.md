@@ -65,3 +65,12 @@ $$
 \rho(p) = 1 - \rho(G) = 1 - \rho(r \oplus s) = 0
 \end{array}
 $$
+
+## Question 5
+
+L'algorithme considère la première clause de la formule.
+Si elle est vide, la formule n'est pas satisfiable.
+Si elle ne contient qu'un littéral, on modifie la valuation courante puis on calcule la satisfiabilité du reste de la formule.
+Sinon, l'algorithme modifie si besoin la clause en une clause équisatisfiable avec un littéral positif. Ainsi, la nouvelle formule est de la forme $(p \oplus G) \land F$. On calcule ensuite récursivement la satisfiabilité de $F \[ \neg G / p \]$, qui donne exactement la satisfiabilité de la formule initiale.
+
+L'algorithme termine puisque le nombre de clauses décroit à chaque appel récursif. La question 3 assure sa correction.
