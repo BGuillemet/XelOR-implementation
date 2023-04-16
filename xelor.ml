@@ -75,9 +75,21 @@ let rec xelor f rho nb_vars = match f with
                                       rho2.(l) <- 1 - eval_xor g rho;
                                       rho2)
 
+let print_result f nb_vars =
+  let rho = Array.make (nb_vars+1) 0 in
+  try
+    let modele = xelor f rho nb_vars in
+    print_string "SAT\n"; print_val modele
+  with
+    Unsat -> print_string "UNSAT\n"
 
-(* Exemple *)
+(* Exemples *)
 
-let ex = [[1;3;4];[2;-3;4];[1;2;-4];[1;-2;-3]]
+let ex1 = [[1;3;4];[2;-3;4];[1;2;-4];[1;-2;-3]]
+let ex2 = [[1;2]; [1;-3]; [-2;3]]
 
-let () = print_val (xelor ex [|0;0;0;0;0|] 4)
+(* let () = print_result ex2 4 *)
+
+let () =
+  let f, nb_vars = Dimacs.parse Sys.argv.(1) in
+  print_result f nb_vars
